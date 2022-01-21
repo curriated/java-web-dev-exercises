@@ -19,6 +19,19 @@ public class MenuItem {
         this.newness = true;
     }
 
+    public static boolean isNew(MenuItem aMenuItem){
+
+    }
+
+    public static String printMenuItem(MenuItem aMenuItem){
+
+    }
+
+    public boolean equals(MenuItem aMenuItem){
+
+    }
+
+
     public String getName() {
         return name;
     }

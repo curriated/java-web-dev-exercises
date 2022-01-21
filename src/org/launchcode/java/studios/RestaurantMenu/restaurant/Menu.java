@@ -4,42 +4,43 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Menu {
-    private ArrayList appetizers = new ArrayList<>();
-    private ArrayList mains = new ArrayList<>();
-    private ArrayList desserts = new ArrayList<>();
+    private ArrayList menu = new ArrayList<>();
     private Date lastUpdated;
 
-    public Menu(ArrayList appetizers, ArrayList mains, ArrayList desserts, Date lastUpdated) {
-        this.appetizers = appetizers;
-        this.mains = mains;
-        this.desserts = desserts;
+    public Menu(ArrayList menu, Date lastUpdated) {
+        this.menu = menu;
         this.lastUpdated = lastUpdated;
     }
 
-    public ArrayList getAppetizers() {
-        return appetizers;
+    public static void addMenuItem(MenuItem aMenuItem){
+        menu.add(aMenuItem);
     }
 
-    public void setAppetizers(ArrayList appetizers) {
-        this.appetizers = appetizers;
+    public static void removeMenuItem(MenuItem aMenuItem){
+        if(menu.contains(aMenuItem)){
+            menu.remove(aMenuItem);
+        } else {
+            System.out.println("This menu item does not exist");
+        }
+
     }
 
-    public ArrayList getMains() {
-        return mains;
+    public static ArrayList printMenu(Menu aMenu){
+        return aMenu.getMenu();
     }
 
-    public void setMains(ArrayList mains) {
-        this.mains = mains;
+    public static String lastUpdated(Menu aMenu){
+        return aMenu.lastUpdated;
     }
 
-    public ArrayList getDesserts() {
-        return desserts;
+    // getters and setters:
+    public ArrayList getMenu() {
+        return menu;
     }
 
-    public void setDesserts(ArrayList desserts) {
-        this.desserts = desserts;
+    public void setMenu(ArrayList menu) {
+        this.menu = menu;
     }
-
     public Date getLastUpdated() {
         return lastUpdated;
     }

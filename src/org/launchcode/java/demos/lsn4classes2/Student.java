@@ -30,13 +30,23 @@ public class Student {
 
 
      //TODO: Uncomment and complete the getGradeLevel method here:
-//    public String getGradeLevel() {
-//        // Determine the grade level of the student based on numberOfCredits
-//    }
+     public String getGradeLevel(int credits) {
+         if (credits <= 29) {
+             return "freshman";
+         } else if (credits <= 59) {
+             return "sophomore";
+         } else if (credits <= 89) {
+             return "junior";
+         } else {
+             return "senior";
+         }
+     }
 
-    // TODO: Complete the addGrade method.
     public void addGrade(int courseCredits, double grade) {
-        // Update the appropriate fields: numberOfCredits, gpa
+        double totalQualityScore = this.gpa * this.numberOfCredits;
+        totalQualityScore += courseCredits * grade;
+        this.numberOfCredits += courseCredits;
+        this.gpa = totalQualityScore/this.numberOfCredits;
     }
 
     // TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
@@ -44,6 +54,41 @@ public class Student {
 
     // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
     //  Student objects equal.
+
+
+    @Override
+    // helps you organize your code, says hey we're overriding this so you know that there's another method that exists with the same name
+    public String toString(){
+        String studentReport = String.format("%s is a %s with %d credits and a GPA of %.2f", this.name,this.getGradeLevel(this.numberOfCredits),this.getNumberOfCredits(),this.getGpa());
+        // %s is a string, %d is a double, %.2f is a float with 2 digits
+        // bootleg template literals
+    }
+
+    public boolean equals(Object toBeCompared){
+        // is this object literally the same object as this? return true
+        if(toBeCompared == this){
+            return true;
+        }
+        //check that the object isn't null, or else the rest will be mad at you
+        if(toBeCompared == null){
+            return false;
+        }
+        // this makes sure they're the same class
+        if(toBeCompared.getClass() != getClass()){
+            return false;
+        }
+        // everything else is placed before here so that it runs faster
+        Student theStudent = (Student) toBeCompared;
+        return theStudent.getStudentId() == getStudentId();
+    }
+
+    public boolean equals(Student toBeCompared){
+        if(this.studentId == toBeCompared.studentId){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public String getName() {
         return name;

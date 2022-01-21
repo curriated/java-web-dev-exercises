@@ -48,4 +48,18 @@ public class Student {
     public void setGpa(double gpa) {
         this.gpa = gpa;
     }
+
+    public String getGradeLevel(int credits) {
+        if(credits <= 29){
+            return "freshman";
+        } else if (credits <= 59){
+            return "sophomore";
+        } else if (credits <= 89){
+            return "junior";
+        } else {
+            return "senior";
+        }
+
+    }
+
 }
