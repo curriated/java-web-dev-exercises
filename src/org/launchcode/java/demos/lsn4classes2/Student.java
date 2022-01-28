@@ -62,6 +62,7 @@ public class Student {
         String studentReport = String.format("%s is a %s with %d credits and a GPA of %.2f", this.name,this.getGradeLevel(this.numberOfCredits),this.getNumberOfCredits(),this.getGpa());
         // %s is a string, %d is a double, %.2f is a float with 2 digits
         // bootleg template literals
+        return studentReport;
     }
 
     public boolean equals(Object toBeCompared){
